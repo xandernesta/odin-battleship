@@ -44,7 +44,6 @@ const gameboardFactory = () => {
     init,
     placeShip,
     placedShipsArray,
-    isValidPlacement
   }
 }
 
