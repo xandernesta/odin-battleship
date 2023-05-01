@@ -8,6 +8,7 @@ describe('Gameboard unit functions', () => {
         testGameboard = gameboardFactory()
         testGameboard.init()
     })
+
     test('Gameboard initializes to an array of length 100', ()=>{
         const testArr = []
         for (let i =0; i <100; i++){
@@ -38,5 +39,38 @@ describe('Gameboard unit functions', () => {
         testGameboard.placeShip('A2', 'A3')
         expect(testGameboard.placeShip('A0','A1')).toBe('Invalid Placement')
     })
+    //testing new function for receiving attacks on the board
+    describe('receiveAttack function', ()=>{
+        beforeEach(() => {
+            if(testGameboard.placedShipsArray.filter(e => e.shipCoordsArray.includes('A2') || e.shipCoordsArray.includes('A3')).length ===0)
+            testGameboard.placeShip('A2','A3')
+        })
+        afterEach(()=>{
+            testGameboard = gameboardFactory()
+            testGameboard.init()
+        })
+        test('calling receiveAttack on an unoccupied space returns a miss by changing gamboard.isHit to true',()=>{
+            expect(testGameboard.gameboard[59].isHit).toBe(false)
+            expect(testGameboard.gameboard[59].hasShip).toBe(false)
+            testGameboard.receiveAttack('F10')
+            expect(testGameboard.gameboard[59].isHit).toBe(true)
+            expect(testGameboard.gameboard[59].hasShip).toBe(false)
+        })
+        test('calling receiveAttack on a ship-occupied space returns a hit by changing gamboard.isHit to true and gameboard.hasShip should be true',()=>{
+            expect(testGameboard.gameboard[1].isHit).toBe(false)
+            expect(testGameboard.gameboard[1].hasShip).toBe(true)
+            testGameboard.receiveAttack('A2')
+            expect(testGameboard.gameboard[1].isHit).toBe(true)
+            expect(testGameboard.gameboard[1].hasShip).toBe(true)
+            let hitShip = testGameboard.getShipByCoord('A2')
+            expect(hitShip.shipCoordsArray).toEqual(['hit','A3'])
+        })
+        test('getShipByCoord returns a ship in gameboard.placedShipsArray that matches the coord parameter',()=>{
+            expect(testGameboard.getShipByCoord('A3')).toEqual(expect.objectContaining({
+                shipCoordsArray: [ 'A2', 'A3' ],
+            }))
+        })
+    })
+    
 
 })

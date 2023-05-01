@@ -39,11 +39,24 @@ const gameboardFactory = () => {
     if (isValidArray.includes(false)){isValid = false}
     return isValid
   }
+  const receiveAttack = (coord) => {
+    const gbIndex = translateCoordToIndex(coord)
+    gameboard[gbIndex].isHit = true
+    if(gameboard[gbIndex].hasShip === true){
+      getShipByCoord(coord).hit(coord)
+    }
+  }
+  const getShipByCoord = (coord) =>{
+    let foundShip = placedShipsArray.reduce((ele => ele.shipCoordsArray.includes(coord)))
+    return foundShip
+  }
   return {
     gameboard,
     init,
     placeShip,
     placedShipsArray,
+    receiveAttack,
+    getShipByCoord
   }
 }
 
