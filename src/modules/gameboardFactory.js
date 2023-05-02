@@ -42,9 +42,12 @@ const gameboardFactory = () => {
   const receiveAttack = (coord) => {
     const gbIndex = translateCoordToIndex(coord)
     gameboard[gbIndex].isHit = true
+    let hitOrNot = 'not a hit'
     if(gameboard[gbIndex].hasShip === true){
-      getShipByCoord(coord).hit(coord)
+      hitOrNot = getShipByCoord(coord).hit(coord)
+      
     }
+    return hitOrNot
   }
   const getShipByCoord = (coord) =>{
     let foundShip = placedShipsArray.reduce((ele => ele.shipCoordsArray.includes(coord)))

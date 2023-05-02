@@ -6,7 +6,7 @@ const shipFactory = (...coords) => {
       const hitIndex = shipCoordsArray.findIndex(ele => ele === coord)
       shipCoordsArray[hitIndex] = 'hit'
       return 'hit'
-    } else return 'not a hit'
+    }
   }
   let isSunk = () => {
     if (shipCoordsArray.every(ele => ele === 'hit')) return true

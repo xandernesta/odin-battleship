@@ -32,7 +32,7 @@ describe('ship unit functions', () => {
     ])
   })
   test("calling hit() on a coord not in battleship's coordArray does not change it an returns 'not a hit' ", () => {
-    expect(testBattleship.hit('B4')).toBe('not a hit')
+    expect(testBattleship.hit('B4')).toEqual(undefined)
     expect(testBattleship.shipCoordsArray).toEqual([
       'A3',
       'A4',
