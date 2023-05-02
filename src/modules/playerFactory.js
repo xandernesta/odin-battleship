@@ -1,0 +1,5 @@
+const playerFactory = () => {
+    
+}
+
+export {playerFactory}

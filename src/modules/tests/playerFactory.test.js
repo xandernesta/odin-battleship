@@ -1,0 +1,1 @@
+import {playerFactory} from './playerFactory.js'

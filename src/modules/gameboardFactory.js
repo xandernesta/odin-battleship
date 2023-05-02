@@ -26,7 +26,7 @@ const gameboardFactory = () => {
         let gIndex = gameboardIndexes[i]
         gameboard[gIndex].hasShip = true
       }
-    } else return 'Invalid Placement'
+    } else throw new Error('Invalid Placement')
   }
   const isValidPlacement = (...indexes) => {
     let isValidArray = []
@@ -50,13 +50,25 @@ const gameboardFactory = () => {
     let foundShip = placedShipsArray.reduce((ele => ele.shipCoordsArray.includes(coord)))
     return foundShip
   }
+  const allShipsHaveSunk = () => {
+    let allAreSunk = true
+    for(let i = 0; i < placedShipsArray.length; i++){
+      if(placedShipsArray[i].isSunk()=== false){
+        allAreSunk = false
+        break
+      }
+    }
+    return allAreSunk
+  }
   return {
     gameboard,
     init,
     placeShip,
     placedShipsArray,
     receiveAttack,
-    getShipByCoord
+    getShipByCoord,
+    allShipsHaveSunk
+
   }
 }
 
