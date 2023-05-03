@@ -42,9 +42,9 @@ header {
   }
 h1 {
     display: inline-block;
-    margin-left: 4px;
+    margin-left: .25rem;
     font-family: 'Quantico';
-    font-size: 48px;
+    font-size: 4rem;
 }
 /*CONTAINER STYLE*/
 #content {
@@ -54,8 +54,6 @@ h1 {
     /* transition: 300ms ease-in-out; */
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-top: 30%;   
   }
 /* .content.active {
     transform: none;
@@ -65,18 +63,47 @@ h1 {
 .container-right {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content:space-around;
+    align-items:center;
     gap: 1rem;
-    width: 30%;
-    background: black;
+    width: 20rem;
+    margin: 2rem 14rem 2rem 14rem;
+    /* background: black; */
 }
 h3 {
     color: #273547e7;
     cursor: default;
+    font-size: 1.5rem;
     margin: 0;
 }
-
+/*GAMEBOARD STYLE*/
+/*Table styling */
+.board {
+    display: table;
+    flex-shrink: 0;
+    table-layout: fixed;
+    border: 1px solid black;
+    width: 4rem;
+    height: 6rem;
+    /* grid-template-rows: repeat(10, 1fr); */
+    
+}
+.tr{ 
+    display: table-row; 
+    padding: 1rem;
+}
+.td{ 
+    display: table-cell; 
+    border: 1px solid black;
+    color: white;
+    text-align:center;
+    padding: .8rem 0 .5rem 0;
+    width: 3rem;
+    height: 3rem;
+}
+.td:not(.header):hover{
+    background: var(--dark-font-color);
+}
 
 /*FOOTER STYLE*/
 footer{
