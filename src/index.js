@@ -1,4 +1,7 @@
 import './styles.css';
-import {renderGameboards} from './modules/domFunctions.js'
+import {addGameboardsToDom, addPlayerShipsToDom} from './modules/domFunctions.js'
 
-let init = renderGameboards()
+addGameboardsToDom()
+//these might need to go into gameController
+//addPlayerShipsToDom()
+//generateAI fleet

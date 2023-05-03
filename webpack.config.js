@@ -28,7 +28,8 @@ module.exports = {
       title: 'Battleship Page',
       content: 'class="content"',
       template: './src/template_index.html',
-      filename: './index.html'
+      filename: './index.html',
+      favicon: './src/assets/battleship.ico'
     }),
   ],
   module: {

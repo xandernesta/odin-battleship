@@ -6,7 +6,6 @@ describe('playerFactory initialization', () => {
     expect(humanBob).toEqual(
       expect.objectContaining({
         playerName: 'Bob',
-        ships: [],
         gameboard: expect.objectContaining({
           placedShipsArray: []
         })
@@ -29,6 +28,16 @@ describe('playerFactory functions', () => {
     })
     test("AI shoots at A4 and hits",()=>{
         expect(aI.shoot('A4',human.gameboard)).toBe('hit')
+    })
+    test("player can generate a valid random ship of consecutive coords on their board ", ()=>{
+      human.genRandomFleet()
+      expect(human.gameboard.placedShipsArray).toEqual(expect.arrayContaining([
+        expect.objectContaining({shipCoordsArray:['C2','C3','C4','C5','C6']}),
+        expect.objectContaining({shipCoordsArray:['E2','E3','E4','E5']}),
+        expect.objectContaining({shipCoordsArray:['A1','B1','C1']}),
+        expect.objectContaining({shipCoordsArray:['G2','G3','G4']}),
+        expect.objectContaining({shipCoordsArray:['I2','I3']})
+      ]))
     })
   })
 
