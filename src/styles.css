@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Inter:wght@100;400;500;600&family=Mochiy+Pop+One&family=Permanent+Marker&family=Roboto:ital,wght@0,100;0,500;0,700;1,100&family=Fraunces&family=Poppins:ital,wght@0,400;0,600;1,400&family=Josefin+Sans:ital,wght@0,200;0,300;0,400;1,200;1,400&family=Montserrat:wght@300;400;500;600;700&family=Quantico&display=swap');
+:root {
+    --dark-font-color: black;
+    --dark-gray:rgb(94, 94, 94);
+    --header-background-color:rgb(9, 61, 107);
+    --light-font-color: rgb(238, 238, 238);
+    --sidebar-background-color:rgb(14, 100, 100, .8);
+    --blue: rgb(9, 61, 107);
+    --light-blue: rgb(211, 236, 247);
+    --purple: rgb(94, 14, 144);
+    --aqua: #00B3BB;
+    --light-aqua: #00E6AA;
+    --dark-aqua: #0E9AA1;
+    --menu-h4-color: rgb(7, 33, 56);
+    --border-color: #222;
+    --background-dark: rgba(0, 0, 0, 0.9);
+    --background-light: #DFF1F6;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, 
+body {
+    margin:0;
+    height: 100%;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    background: linear-gradient(180deg, var(--light-blue) 0%, var(--blue) 95.5%);
+}
+/* HEADER STYLE */
+header {
+    display: inline-block;
+    width: 100%;
+    padding: 1rem;
+    border-color: 1px solid var(--dark-font-color);
+    text-align: left;
+  }
+h1 {
+    display: inline-block;
+    margin-left: 4px;
+    font-family: 'Quantico';
+    font-size: 48px;
+}
+/*CONTAINER STYLE*/
+#content {
+    padding:1rem;
+    /* transform: translateY(-100vw); */
+    /* opacity: 0; */
+    /* transition: 300ms ease-in-out; */
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 30%;   
+  }
+/* .content.active {
+    transform: none;
+    opacity: 100%;
+} */
+.container-left,
+.container-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    width: 30%;
+    background: black;
+}
+h3 {
+    color: #273547e7;
+    cursor: default;
+    margin: 0;
+}
+
+
+/*FOOTER STYLE*/
+footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.footer {
+    font-family: 'Mochiy Pop One';
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem 0;
+    color: var(--light-font-color);
+    background: var(--blue)
+}
+a {
+    display: inline-block;
+    text-decoration:none;
+    color: var(--light-font-color);
+}
+
+.fa-github {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease-in-out;
+    margin-left: 4px;
+}
+
+.fa-github:hover {
+    transform: rotate(360deg)  scale(1.1); /* Don't want it to rotate on this page */
+    color: var(--light-font-color);
+}

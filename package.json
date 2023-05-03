@@ -1,13 +1,33 @@
 {
-  "type": "module",
+  "version": "1.0.0",
+  "description": "Restaurant page project for Odin project",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xandernesta/odin-battleship.git"
+  },
+  "homepage": "https://github.com/xandernesta/odin-battleship#readme",
+  "author": "Xander",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xandernesta/odin-battleship/issues"
+  },
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
     "babel-jest": "^29.5.0",
-    "jest": "^29.5.0"
+    "css-loader": "^6.7.3",
+    "html-webpack-plugin": "^5.5.1",
+    "jest": "^29.5.0",
+    "style-loader": "^3.3.2",
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2",
+    "webpack-dev-server": "^4.13.3"
   },
   "scripts": {
     "test": "jest",
-    "watch": "jest --watch"
+    "watch": "jest --watch",
+    "server": "node server.js",
+    "build": "webpack"
   }
 }
