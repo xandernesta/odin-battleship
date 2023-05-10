@@ -1,4 +1,5 @@
 import {renderGameboard} from './game_helpers/renderGameboard.js'
+import {playerFactory} from './playerFactory.js'
 function addGameboardsToDom () {
   let leftContainer = document.createElement('div')
   leftContainer.classList.add('container-left')
@@ -36,6 +37,20 @@ function addPlayerShipsToDom(){
 * only change background of divs for player ships
 *
 */
+let player1 = playerFactory()
+let aiPlayer = playerFactory()
+player1.genRandomFleet()
+let playerShipsCoords = []
+//makes an Array of Array with each ship object's shipCoordsArray as an element
+for(let i = 0;i<player1.gameboard.placedShipsArray.length;i++){
+  playerShipsCoords.push(player1.gameboard.placedShipsArray[i].shipCoordsArray)
+}
+//because playShipsCoords is an Array of arrays, we can flatten the nested arrays into a single array to loop through to make grabbing the cells and adding to them a bit easier and not need a nested loop
+let flatCoords = playerShipsCoords.flat(2)
+for(let i = 0;i<flatCoords.length;i++){
+  let shipCell = document.getElementById(`${flatCoords[i]}`)
+  shipCell.classList.add('hasShip')
+}
 
 }
 

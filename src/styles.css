@@ -101,8 +101,11 @@ h3 {
     width: 3rem;
     height: 3rem;
 }
-.td:not(.header):hover{
+.td:not(.header):not(.hasShip):hover{
     background: var(--dark-font-color);
+}
+.td.hasShip{
+    background: var(--light-aqua);
 }
 
 /*FOOTER STYLE*/
