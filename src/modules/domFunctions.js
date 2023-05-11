@@ -42,16 +42,17 @@ function addCellListeners(p1, enemyGameboard){
     const rightGameboardDom = document.getElementById('gameboard-right')
     const cells = rightGameboardDom.querySelectorAll('.cell')
     // let cells = Array.from(rows.querySelectorAll('.cell'))
-    cells.forEach((cell) => cell.addEventListener("click", (e) => {function handler(e) {
+    // NEED TO FIX THIS EVENT HANDLER SO I CAN REMOVE IT AND SO IT WORKS
+    cells.forEach((cell) => cell.addEventListener("click", (e) => { function clickHandler(e) {
       let coord = e.target.id
       if (!p1.isTurn) return;
       if(enemyGameboard.receiveAttack(coord)=== 'not a hit'){
         cell.classList.add('miss')
-        cell.removeEventListener('click', clickCb)
+        cell.removeEventListener('click', handler)
         e.stopPropagation()
       } else if(enemyGameboard.receiveAttack(coord)=== 'hit'){
         cell.classList.add('isHit')
-        cell.removeEventListener('click', clickCb)
+        cell.removeEventListener('click', handler)
         e.stopPropagation()
       }
     }
