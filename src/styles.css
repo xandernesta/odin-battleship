@@ -112,7 +112,7 @@ h3 {
 .td.hasShip.isHit{
     background: var(--red);
 }
-.td.isHit:not(.hasShip){
+.td.miss{
     background: var(--light-gray);
 }
 /*FOOTER STYLE*/
