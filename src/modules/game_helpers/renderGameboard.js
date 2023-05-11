@@ -15,11 +15,13 @@ function renderGameboard(playerStr, domEle){
           if(j === 0) {
             cell.textContent = ' ';
             cell.classList.add('header')
+            cell.classList.remove('cell')
           }
           else {
             cell.textContent = `${j}`
             cell.setAttribute('scope','col')
             cell.classList.add('header')
+            cell.classList.remove('cell')
           }
         }
         //while setting first column, add table row headers and add scope
@@ -27,6 +29,7 @@ function renderGameboard(playerStr, domEle){
           cell.textContent = `${rowLetters[i]}`
           cell.setAttribute('scope','row')
           cell.classList.add('header')
+          cell.classList.remove('cell')
         } 
         row.appendChild(cell)
       }

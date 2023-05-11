@@ -46,14 +46,21 @@ const gameboardFactory = () => {
     gameboard[gbIndex].isHit = true
     let hitOrNot = 'not a hit'
     if (gameboard[gbIndex].hasShip === true) {
+      if (gameboard[gbIndex].isHit === true) {
+        return hitOrNot='hit'
+      }
       hitOrNot = getShipByCoord(coord).hit(coord)
     }
     return hitOrNot
   }
   const getShipByCoord = coord => {
-    let foundShip = placedShipsArray.reduce(ele =>
-      ele.shipCoordsArray.includes(coord)
-    )
+    let foundShip = ''
+    for(let i = 0; i < placedShipsArray.length; i++){
+      if (placedShipsArray[i].shipCoordsArray.includes(coord)){
+        foundShip = placedShipsArray[i]
+        break
+      }
+    }
     return foundShip
   }
   const allShipsHaveSunk = () => {

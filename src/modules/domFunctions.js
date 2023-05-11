@@ -1,5 +1,6 @@
 import {renderGameboard} from './game_helpers/renderGameboard.js'
-import {playerFactory} from './playerFactory.js'
+// import { addCellListeners } from './game_helpers/addCellListeners.js'
+
 function addGameboardsToDom () {
   let leftContainer = document.createElement('div')
   leftContainer.classList.add('container-left')
@@ -22,6 +23,7 @@ function addGameboardsToDom () {
   //create players' gameboard divs and appends to the domElement provided as second input 
   renderGameboard('player', leftGameboard)
   renderGameboard('enemy', rightGameboard)
+ 
   //End of player2's gameboard
   //appends to existing elements
   leftContainer.appendChild(leftGameboard)
@@ -29,7 +31,34 @@ function addGameboardsToDom () {
   document.getElementById('content').appendChild(leftContainer)
   document.getElementById('content').appendChild(rightContainer)
 }
-function addPlayerShipsToDom(){
+function addCellListeners(p1, enemyGameboard){
+  /*     p1.board.board[i].forEach((e, j) => {
+          let cell = document.createElement("div");
+          cell.classList.add("cell-p1");
+          cell.setAttribute("id", `p1-row${i}-cell${j}`);
+          row.appendChild(cell); */
+    
+          // event listener for p1 clicking on p2 board
+    const rightGameboardDom = document.getElementById('gameboard-right')
+    const cells = rightGameboardDom.querySelectorAll('.cell')
+    // let cells = Array.from(rows.querySelectorAll('.cell'))
+    cells.forEach((cell) => cell.addEventListener("click", (e) => {function handler(e) {
+      let coord = e.target.id
+      if (!p1.isTurn) return;
+      if(enemyGameboard.receiveAttack(coord)=== 'not a hit'){
+        cell.classList.add('miss')
+        cell.removeEventListener('click', clickCb)
+        e.stopPropagation()
+      } else if(enemyGameboard.receiveAttack(coord)=== 'hit'){
+        cell.classList.add('isHit')
+        cell.removeEventListener('click', clickCb)
+        e.stopPropagation()
+      }
+    }
+  }))
+
+  }
+function addPlayerShipsToDom(p1,p2){
 /*
 * start with randomFleet generation for player AI fleet should get handled in gameController
 * get coordinates of ships
@@ -37,9 +66,8 @@ function addPlayerShipsToDom(){
 * only change background of divs for player ships
 *
 */
-let player1 = playerFactory()
-let aiPlayer = playerFactory()
-player1.genRandomFleet()
+let player1 = p1
+let aiPlayer = p2
 let playerShipsCoords = []
 //makes an Array of Array with each ship object's shipCoordsArray as an element
 for(let i = 0;i<player1.gameboard.placedShipsArray.length;i++){
@@ -54,4 +82,4 @@ for(let i = 0;i<flatCoords.length;i++){
 
 }
 
-export { addGameboardsToDom, addPlayerShipsToDom }
+export { addGameboardsToDom, addPlayerShipsToDom, addCellListeners }

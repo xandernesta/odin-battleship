@@ -1,11 +1,19 @@
 import { gameboardFactory } from './gameboardFactory.js'
 const playerFactory = name => {
   let playerName = name
+  let isTurn = false
   //let ships = []
   let gameboard = gameboardFactory()
   gameboard.init()
   const shoot = (coord, oppGameboard) => {
     return oppGameboard.receiveAttack(coord)
+  }
+  const takeTurn = (coordToShoot, opponentsGameboard) => {
+    //set turn tracker var to true
+    isTurn = true
+    //make attack
+    shoot(coordToShoot, opponentsGameboard)
+
   }
 /* started this random ship generator but think I will explore manual player selection first   
 const genRandomShip = (length) => {
@@ -54,6 +62,8 @@ const genRandomShip = (length) => {
     //ships,
     gameboard,
     shoot,
+    isTurn,
+    takeTurn,
     //genRandomShip,
     genRandomFleet
   }

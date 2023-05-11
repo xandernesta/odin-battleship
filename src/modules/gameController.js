@@ -1,6 +1,16 @@
-import {Player} from './playerFactory.js'
+import {playerFactory} from './playerFactory.js'
+import {addPlayerShipsToDom, addCellListeners} from './domFunctions.js'
 const gameController = () => {
+    const init = () => {
+        let player1 = playerFactory()
+        let aiPlayer = playerFactory()
+        player1.genRandomFleet()
+        aiPlayer.genRandomFleet()
+        addPlayerShipsToDom(player1,aiPlayer)
+        addCellListeners(player1,aiPlayer.gameboard)
+        player1.isTurn=true
 
+    }
     const checkIfWinner = (player1, player2) =>{
         let winner = '';
         if(player1.gameboard.allShipsHaveSunk()){
@@ -11,5 +21,8 @@ const gameController = () => {
         }
         return winner
     }
+    return{
+        init,
+    }
 }
-export {gameController}
+export { gameController }
